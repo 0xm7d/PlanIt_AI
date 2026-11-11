@@ -1,25 +1,137 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PlanIt AI</title>
+    <title>PlanIt AI - Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  </head>
-<body class="bg-slate-50 min-h-screen text-slate-900">
-    <header class="bg-gradient-to-r from-[#17143C] via-[#51349A] shadow-lg">
-        <nav class="flex items-center justify-between max-w-7xl mx-auto px-6 py-5 gap-6">
-            <a href="index.html" class="text-white text-2xl font-extrabold tracking-tight">
-                PlanIt <span class="text-violet-400">AI</span>
+</head>
+<body class="bg-[#F4EEE6] min-h-screen text-[#372B30]">
+    <header class="bg-[#542B35] text-white">
+        <nav class="max-w-6xl mx-auto px-5 py-5 flex flex-wrap items-center justify-between gap-5">
+            <a href="index.html" class="text-2xl font-bold">
+                PlanIt <span class="text-[#E7A99C]">AI</span>
             </a>
-            <div class="hidden md:flex items-center gap-2 border border-white/25 p-1.5 rounded-full bg-white/10">
-                <a href="index.html" class="rounded-full bg-violet-600 px-5 py-2.5 text-white font-medium shadow-md">Dashboard</a>
-                <a href="new-project.html" class="rounded-full px-5 py-2.5 text-slate-200 hover:bg-white/10 hover:text-white transition-colors">Nouveau projet</a>
+            <div class="flex items-center gap-6">
+                <a href="index.html" class="text-white border-b-2 border-[#E7A99C] pb-1">Dashboard</a>
+                <a href="new-project.html" class="text-[#D9C5C7] hover:text-white">Nouveau projet</a>
             </div>
-            <button id="open-settings" class="rounded-full border border-violet-400/40 bg-white/10 px-5 py-2.5 text-white hover:bg-white/20 transition-colors">
+            <button type="button" id="open-settings" class="border border-[#A7828C] px-4 py-2 hover:bg-[#68414B]">
                 Paramètres IA
             </button>
         </nav>
     </header>
+    <main class="max-w-6xl mx-auto px-5 py-10">
+        <section class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
+            <div>
+                <p class="text-sm text-[#B65E54] font-semibold mb-2">MON ESPACE DE TRAVAIL</p>
+                <h1 class="text-4xl font-bold">Tableau de bord<span class="text-[#B65E54]">.</span></h1>
+                <p class="text-[#756A6A] mt-3">Tous vos projets, au même endroit.</p>
+            </div>
+            <a href="new-project.html" class="bg-[#B65E54] text-white px-5 py-3 hover:bg-[#984B43]">
+                + Nouveau projet
+            </a>
+        </section>
+        <section class="mb-12">
+            <div class="flex justify-between items-center mb-5">
+                <h2 class="text-xl font-bold">Vue d'ensemble</h2>
+                <span class="text-sm text-[#756A6A]">Statistiques</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div class="bg-[#FFFCF7] border border-[#D9CBC3] p-6">
+                    <p class="text-sm text-[#756A6A]">Projets</p>
+                    <h3 class="text-4xl font-bold mt-3">01</h3>
+                    <p class="text-sm text-[#B65E54] mt-2">Projet actif</p>
+                </div>
+                <div class="bg-[#FFFCF7] border border-[#D9CBC3] p-6">
+                    <p class="text-sm text-[#756A6A]">Total des tâches</p>
+                    <h3 class="text-4xl font-bold mt-3">10</h3>
+                    <p class="text-sm text-[#756A6A] mt-2">Toutes les tâches</p>
+                </div>
+                <div class="bg-[#FFFCF7] border border-[#D9CBC3] p-6">
+                    <p class="text-sm text-[#756A6A]">Tâches terminées</p>
+                    <h3 class="text-4xl font-bold mt-3">06</h3>
+                    <p class="text-sm text-[#B65E54] mt-2">60% du travail</p>
+                </div>
+            </div>
+        </section>
+        <section class="mb-16">
+            <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+                <div>
+                    <h2 class="text-2xl font-bold">Mes projets</h2>
+                    <p class="text-sm text-[#756A6A] mt-1">Retrouvez vos projets et leur progression.</p>
+                </div>
+                <span class="text-sm text-[#756A6A]">1 projet</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <article class="bg-[#FFFCF7] border border-[#D9CBC3] p-6">
+                    <div class="flex items-start justify-between gap-4">
+                        <div>
+                            <p class="text-xs text-[#B65E54] font-bold mb-2">PROJET 01</p>
+                            <h3 class="text-xl font-bold">Apprentissage de la plateforme</h3>
+                        </div>
+                        <button type="button" class="text-sm text-[#A23939] hover:underline">
+                            Supprimer
+                        </button>
+                    </div>
+                    <p class="text-sm text-[#756A6A] mt-3">
+                        Découvrir les outils et organiser les premières tâches du projet.
+                    </p>
+                    <div class="border-t border-[#D9CBC3] mt-6 pt-5">
+                        <div class="grid grid-cols-3 gap-3">
+                            <div>
+                                <p class="text-2xl font-bold">10</p>
+                                <p class="text-xs text-[#756A6A] mt-1">Total</p>
+                            </div>
+                            <div>
+                                <p class="text-2xl font-bold">06</p>
+                                <p class="text-xs text-[#756A6A] mt-1">Terminées</p>
+                            </div>
+                            <div>
+                                <p class="text-2xl font-bold">04</p>
+                                <p class="text-xs text-[#756A6A] mt-1">Restantes</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between mt-6 mb-2 text-sm">
+                            <span class="text-[#756A6A]">Progression</span>
+                            <span class="font-bold">60%</span>
+                        </div>
+                        <div class="w-full h-2 bg-[#E8DCD5]">
+                            <div class="h-2 bg-[#B65E54] w-[60%]"></div>
+                        </div>
+                        <div class="flex items-center justify-between mt-6">
+                            <span class="text-xs text-[#756A6A]">6 tâches sur 10</span>
+                            <a href="project.html?id=1" class="text-sm font-bold text-[#542B35] hover:underline">
+                                Ouvrir le projet →
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                <!-- <a href="new-project.html" class="border-2 border-dashed border-[#CBB8AF] p-6 min-h-64 flex flex-col items-center justify-center text-center hover:bg-[#EDE3DB]">
+                    <span class="text-4xl text-[#B65E54]">+</span>
+                    <h3 class="text-lg font-bold mt-3">Créer un projet</h3>
+                    <p class="text-sm text-[#756A6A] mt-2">
+                        Une nouvelle idée ? Commencez ici.
+                    </p>
+                </a> -->
+            </div>
+            <div id="empty-projects" class="hidden bg-[#FFFCF7] border border-[#D9CBC3] p-8 text-center mt-5">
+                <h3 class="text-xl font-bold">Aucun projet</h3>
+                <p class="text-sm text-[#756A6A] mt-3">
+                    Aucun projet pour le moment, créez-en un pour générer votre premier plan.
+                </p>
+                <a href="new-project.html" class="inline-block bg-[#B65E54] text-white px-5 py-3 mt-5">
+                    Nouveau projet
+                </a>
+            </div>
+        </section>
+    </main>
+    <footer class="border-t border-[#D9CBC3] py-5">
+        <div class="max-w-6xl mx-auto px-5 flex flex-wrap items-center justify-between gap-3">
+            <p class="font-bold">PlanIt <span class="text-[#B65E54]">AI</span></p>
+            <p class="text-sm text-[#756A6A]">Organisez vos idées. Avancez à votre rythme.</p>
+        </div>
+    </footer>
 </body>
 </html>
