@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlanIt AI</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-[#F4EEE6] min-h-screen text-[#372B30]">
+    <header class="bg-[#542B35] text-white">
+        <nav class="max-w-6xl mx-auto px-5 py-5 flex flex-wrap items-center justify-between gap-5">
+            <a href="index.html" class="text-2xl font-bold">
+                PlanIt <span class="text-[#E7A99C]">AI</span>
+            </a>
+            <div class="flex items-center gap-6">
+                <a href="index.html" class="text-white border-b-2 border-[#E7A99C] pb-1">Dashboard</a>
+                <a href="new-project.html" class="text-[#D9C5C7] hover:text-white">Nouveau projet</a>
+            </div>
+            <button type="button" id="open-settings" class="border border-[#A7828C] px-4 py-2 hover:bg-[#68414B]">
+                Paramètres IA
+            </button>
+        </nav>
+    </header>
+    <main class="max-w-6xl mx-auto px-5 py-10">
+        <section class="mb-10">
+            <a href="index.html" class="text-sm text-[#B65E54] hover:underline">
+                Retour au Dashboard
+            </a>
+            <p class="text-sm text-[#B65E54] font-semibold mt-8">
+                Nouveau Projet
+            </p>
+            <h1 class="text-4xl font-bold mt-2">Donnons vie a votre idee</h1>
+            <p class="text-[#756A6A] mt-3">
+                Decrivez votre projet et laisser l'IA preparer votre plan de developpement
+            </p>
+        </section>
+        <section class="grid grid-cols-1 ls:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 bg-[#FFFCF7] border border-[#D9CBC3] p-6 ms:p-8">
+            <div class="flex justify-between items-center border-b border-[#D9CBC3] pb-5 mb-7">
+                <h2 class="text-xl font-bold">Informations du projet</h2>
+                <span class="text-sm text-[#756A6A]">01 / 02</span>
+            </div>
+            <form id="project-form" class="flex flex-col gap-6" novalidate>
+                <div>
+                    <label for="project-name" class="block text-sm font-semibold mb-2">Nom du projet</label>
+                    <input type="text" id="project-name" name="name" placeholder="Ex : Site de finance" required class="w-full border border-[#D9CBC3] bg-white px-4 py-3 outline-none focus:border-[#B65E54]">
+                    <p id="name-error" class="text-red-700 text-xs mt-1"></p>
+                </div>
+            <div>
+              <label
+                for="project-description"
+                class="block text-sm font-semibold mb-2"
+                >Description  </label
+              >
+              <input
+                type="text"
+                id="project-description"
+                name="description"
+                placeholder="Une courte description du projet"
+                required
+                class="w-full border border-[#D9CBC3] bg-white px-4 py-3 outline-none focus:border-[#B65E54]"
+              />
+              <p id="description-error" class="text-red-700 text-xs mt-1"></p>
+            </div>
+            <div>
+              <label
+                for="project-brief"
+                class="block text-sm font-semibold mb-2"
+                >Brief complet </label
+              >
+              <textarea id="project-brief" name="brief" rows="6" placeholder="Expliquez les fonctionnalités, les objectifs et les besoins du projet..." required class="w-full border border-[#D9CBC3] bg-white px-4 py-3 outline-none focus:border-[#B65E54] resize-y"
+              ></textarea>
+              <p id="brief-error" class="text-red-700 text-xs mt-1"></p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label
+                  for="project-duration"
+                  class="block text-sm font-semibold mb-2"
+                  >Durée (jours) </label
+                >
+                <input
+                  type="number"
+                  id="project-duration"
+                  name="duration"
+                  min="1"
+                  step="1"
+                  placeholder="Ex : 7"
+                  required
+                  class="w-full border border-[#D9CBC3] bg-white px-4 py-3 outline-none focus:border-[#B65E54]"
+                />
+                <p id="duration-error" class="text-red-700 text-xs mt-1"></p>
+              </div>
+              <div>
+                <label
+                  for="project-developers"
+                  class="block text-sm font-semibold mb-2"
+                  >Nombre de développeurs </label
+                >
+                <input
+                  type="number"
+                  id="project-developers"
+                  name="developers"
+                  min="1"
+                  step="1"
+                  placeholder="Ex : 3"
+                  required
+                  class="w-full border border-[#D9CBC3] bg-white px-4 py-3 outline-none focus:border-[#B65E54]"
+                />
+                <p id="developers-error" class="text-red-700 text-xs mt-1"></p>
+              </div>
+            </div>
+            <div>
+              <label
+                for="project-technologies"
+                class="block text-sm font-semibold mb-2"
+                >Technologies </label
+              >
+              <input
+                type="text"
+                id="project-technologies"
+                name="technologies"
+                placeholder="HTML, CSS, JavaScript, Tailwind..."
+                required
+                class="w-full border border-[#D9CBC3] bg-white px-4 py-3 outline-none focus:border-[#B65E54]"
+              />
+              <p id="technologies-error" class="text-red-700 text-xs mt-1"></p>
+            </div>
+            <div>
+              <label
+                for="project-difficulty"
+                class="block text-sm font-semibold mb-2"
+                >Niveau de difficulté </label
+              >
+              <select
+                id="project-difficulty"
+                name="difficulty"
+                required
+                class="w-full border border-[#D9CBC3] bg-white px-4 py-3 outline-none focus:border-[#B65E54]"
+              >
+                <option value="">Choisir un niveau</option>
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Advanced">Advanced</option>
+              </select>
+              <p id="difficulty-error" class="text-red-700 text-xs mt-1"></p>
+            </div>
+            <div class="border-t border-[#D9CBC3] pt-6">
+              <button
+                type="submit"
+                id="generate-btn"
+                disabled
+                class="w-full sm:w-auto bg-[#B65E54] text-white px-6 py-3 font-semibold hover:bg-[#984B43] disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                Générer le plan de développement
+              </button>
+            </div>
+
+            </form>
+        </div>
+        </section>
+    </main>
+</body>
+</html>
