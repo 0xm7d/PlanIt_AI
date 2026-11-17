@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlanIt AI - Task Board</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script type="module" src="js/main.js" defer></script>
+</head>
+<body>
+    <header class="bg-[#542B35] text-white">
+        <nav class="max-w-6xl mx-auto px-5 py-5 flex flex-wrap items-center justify-between gap-5">
+            <a href="index.html" class="text-2xl font-bold">
+                PlanIt <span class="text-[#E7A99C]">AI</span>
+            </a>
+            <div class="flex items-center gap-6">
+                <a href="index.html" class="text-white border-b-2 border-[#E7A99C] pb-1">Dashboard</a>
+                <a href="new-project.html" class="text-[#D9C5C7] hover:text-white">Nouveau projet</a>
+            </div>
+            <button type="button" id="open-settings" class="border border-[#A7828C] px-4 py-2 hover:bg-[#68414B]">
+                Paramètres IA
+            </button>
+        </nav>
+    </header>
+    <main class="max-w-6xl mx-auto px-5 py-10">
+        <div class="mb-8">
+            <a href="index.html" class="text-sm text-[#B65E54]">
+                Retour aux Projects
+            </a>
+            <h1 id="project-title" class="text-3xl font-bold mt-5">Planification du projet</h1>
+            <p id="project-summary" class="text-[#756A6A] mt-2">Chargement....</p>
+        </div>
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="bg-[#E8DCD5] p-4">
+          <h2 class="font-bold mb-5">To Do (<span id="todo-count">0</span>)</h2>
+          <div id="todo"></div>
+        </div>
+        <div class="bg-[#E9E4DF] p-4">
+          <h2 class="font-bold mb-5">
+            In Progress (<span id="progress-count">0</span>)
+          </h2>
+          <div id="progress"></div>
+        </div>
+        <div class="bg-[#E2E8DD] p-4">
+          <h2 class="font-bold mb-5">Done (<span id="done-count">0</span>)</h2>
+          <div id="done"></div>
+        </div>
+      </section>
+    </main>
+</body>
+</html>
