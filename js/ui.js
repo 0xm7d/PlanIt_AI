@@ -21,7 +21,7 @@ export function Modal(){
         modal.classList.add('hidden')
     })
 }
-export function render(tasks){
+export function render(tasks , onTaskClick){
     const to_do = document.getElementById("todo")
     const in_progress = document.getElementById("progress")
     const done = document.getElementById("done")
@@ -42,9 +42,29 @@ export function render(tasks){
             </div>
             <p class="text-xs text-[#756A6A] mt-3">Deadline : ${task.deadline}</p>
         `
-        if(task.status == "To Do")
+        card.classList.add('cursor-pointer')
+        card.addEventListener('click', () => {
+            document.getElementById("task-modal").classList.remove("hidden")
+            document.getElementById("task-title").textContent = task.title
+            document.getElementById("task-description").textContent = task.description
+            document.getElementById("task-details").textContent = 
+                `Priorite : ${task.priority} | Duree : ${task.estimatedTime}`
+            document.getElementById("task-status").value = task.status
+            if(onTaskClick) onTaskClick(task)
+        })
+        if(task.status === "To Do")
             to_do.appendChild(card)
+        else if (task.status === "In Progress")
+            in_progress.appendChild(card)
+        else if(task.status === "Done")
+            done.appendChild(card)
     }
+    document.getElementById("todo-count").textContent = 
+        tasks.filter(task => task.status  === "To Do").length
+    document.getElementById("progress-count").textContent = 
+        tasks.filter(task => task.status === "In Progress").length
+    document.getElementById("done-count").textContent = 
+        tasks.filter(task => task.status === "Done").length
 }
 export function DemoBtn(demo){
     const btn = document.querySelector('#demo-btn')
@@ -139,7 +159,25 @@ export function RenderProjectInfo(project){
     const tasks = Array.isArray(project.tasks) ? project.tasks : []
     const TasksLength = tasks.length
     const total = tasks.reduce((sum,task) => {
-        return sum + task.estimatedTime
+        return sum + (Number(task.estimatedTime) || 0 )
     },0)
-    project_summary.textContent = `${totalTasks} tâches · ${totalHours} heures`;
-} 
+    project_summary.textContent = `${TasksLength} tâches · ${total} heures`;
+}
+
+export function StartTaskModal(onSave){
+    const modal = document.getElementById("task-modal")
+    if(!modal) return
+    const closeBtn = document.getElementById("close-task")
+    const saveBtn = document.getElementById("save-task")
+    const statusInput = document.getElementById("task-status")
+    closeBtn.addEventListener('click', () => {
+        modal.classList.add("hidden")
+    })
+    saveBtn.addEventListener('click', () => {
+        onSave(statusInput.value)
+    })
+}
+export function CloseTaskModal(){
+    const modal = document.getElementById("task-modal")
+    if(modal) modal.classList.add('hidden')
+}

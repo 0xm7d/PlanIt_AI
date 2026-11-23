@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PlanIt AI - Task Board</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <script type="module" src="js/main.js" defer></script>
 </head>
 <body>
     <header class="bg-[#542B35] text-white">
@@ -25,27 +24,55 @@
     <main class="max-w-6xl mx-auto px-5 py-10">
         <div class="mb-8">
             <a href="index.html" class="text-sm text-[#B65E54]">
-                Retour aux Projects
+                Retour aux projets
             </a>
             <h1 id="project-title" class="text-3xl font-bold mt-5">Planification du projet</h1>
             <p id="project-summary" class="text-[#756A6A] mt-2">Chargement....</p>
         </div>
         <section class="grid grid-cols-1 md:grid-cols-3 gap-5">
-        <div class="bg-[#E8DCD5] p-4">
-          <h2 class="font-bold mb-5">To Do (<span id="todo-count">0</span>)</h2>
-          <div id="todo"></div>
-        </div>
-        <div class="bg-[#E9E4DF] p-4">
-          <h2 class="font-bold mb-5">
-            In Progress (<span id="progress-count">0</span>)
-          </h2>
-          <div id="progress"></div>
-        </div>
-        <div class="bg-[#E2E8DD] p-4">
-          <h2 class="font-bold mb-5">Done (<span id="done-count">0</span>)</h2>
-          <div id="done"></div>
-        </div>
-      </section>
+            <div class="bg-[#E8DCD5] p-4">
+                <h2 class="font-bold mb-5">To Do (<span id="todo-count">0</span>)</h2>
+                <div id="todo"></div>
+            </div>
+            <div class="bg-[#E9E4DF] p-4">
+                <h2 class="font-bold mb-5">In Progress (<span id="progress-count">0</span>)</h2>
+                <div id="progress"></div>
+            </div>
+            <div class="bg-[#E2E8DD] p-4">
+                <h2 class="font-bold mb-5">Done (<span id="done-count">0</span>)</h2>
+                <div id="done"></div>
+            </div>
+        </section>
     </main>
+    <script type="module" src="js/main.js"></script>
+    <div id="ai-modal" class="hidden fixed inset-0 bg-black/60 flex items-center justify-center z-50">
+        <div class="bg-[#FFFCF7] p-6 rounded-lg w-96 max-w-[90%]">
+            <h2 class="text-xl font-bold mb-4">Parametres AI</h2>
+            <input id="api-key" type="password" placeholder="Cle API" class="w-full border p-3 rounded mb-4">
+            <div class="flex justify-end gap-3">
+                <button id="close-modal" type="button">Annuler</button>
+                <button id="save-key" type="button" class="bg-[#542B35] text-white px-4 py-2 rounded">Enregistere</button>
+            </div>
+        </div>
+    </div>
+    <div id="task-modal" class="hidden fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4">
+        <div class="bg-[#FFFCF7] p-6 rounded-lg w-full max-w-lg">
+            <h2 id="task-title" class="text-xl font-bold mb-4"></h2>
+            <p id="task-description" class="text-sm mb-4"></p>
+            <p id="task-details" class="text-sm mb-4"></p>
+            <label for="task-status" class="block font-semibold mb-2">Status</label>
+            <select id="task-status" class="w-full border p-2 mb-5">
+                <option value="To Do">To Do</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Done">Done</option>
+            </select>
+            <div class="flex justify-end gap-3">
+                <button id="close-task" type="button">Annuler</button>
+                <button id="save-task" type="button" class="bg-[#542B35] text-white px-4 py-2 rounded">
+                    Enregistrer
+                </button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

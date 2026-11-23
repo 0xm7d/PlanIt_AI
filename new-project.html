@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PlanIt AI</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/parsleyjs@2.9.2/dist/parsley.min.js"></script>
+    <script type="module" src="js/main.js"></script>
 </head>
 <body class="bg-[#F4EEE6] min-h-screen text-[#372B30]">
     <header class="bg-[#542B35] text-white">
@@ -40,10 +43,12 @@
                 <h2 class="text-xl font-bold">Informations du projet</h2>
                 <span class="text-sm text-[#756A6A]">01 / 02</span>
             </div>
-            <form id="project-form" class="flex flex-col gap-6" novalidate>
+            <form id="project-form" class="flex flex-col gap-6" data-parsley-validate>
                 <div>
                     <label for="project-name" class="block text-sm font-semibold mb-2">Nom du projet</label>
-                    <input type="text" id="project-name" name="name" placeholder="Ex : Site de finance" required class="w-full border border-[#D9CBC3] bg-white px-4 py-3 outline-none focus:border-[#B65E54]">
+                    <input type="text" id="project-name" name="name" placeholder="Ex : Site de finance"
+                     required  data-parsley-minlength="3" data-parsley-required-message="Le nom du projet est obligatoire" data-parsley-minlength-message="Le nom doit contenir au moins 3 caractères"
+                    class="w-full border border-[#D9CBC3] bg-white px-4 py-3 outline-none focus:border-[#B65E54]">
                     <p id="name-error" class="text-red-700 text-xs mt-1"></p>
                 </div>
             <div>
@@ -149,10 +154,13 @@
               <button
                 type="submit"
                 id="generate-btn"
-                disabled
+                
                 class="w-full sm:w-auto bg-[#B65E54] text-white px-6 py-3 font-semibold hover:bg-[#984B43] disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Générer le plan de développement
+              </button>
+              <button type="button" id="demo-btn" class="bg-[#542B35] text-white px-6 py-3 font-semibold">
+                Mode Demo
               </button>
             </div>
 
@@ -160,5 +168,21 @@
         </div>
         </section>
     </main>
+    <footer class="border-t border-[#D9CBC3] py-5">
+        <div class="max-w-6xl mx-auto px-5 flex flex-wrap items-center justify-between gap-3">
+            <p class="font-bold">PlanIt <span class="text-[#B65E54]">AI</span></p>
+            <p class="text-sm text-[#756A6A]">Organisez vos idées. Avancez à votre rythme.</p>
+        </div>
+    </footer>
+    <div id="ai-modal" class="hidden fixed inset-0 bg-black/60 flex items-center justify-center z-50">
+        <div class="bg-[#FFFCF7] p-6 rounded-lg w-96 max-w-[90%]">
+            <h2 class="text-xl font-bold mb-4">Parametres AI</h2>
+            <input id="api-key" type="password" placeholder="Cle API" class="w-full border p-3 rounded mb-4">
+            <div class="flex justify-end gap-3">
+                <button id="close-modal" type="button">Annuler</button>
+                <button id="save-key" type="button" class="bg-[#542B35] text-white px-4 py-2 rounded">Enregistere</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
