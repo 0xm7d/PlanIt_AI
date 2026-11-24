@@ -1,18 +1,26 @@
+import { addProject } from "./storage.js"
+
 export async function Demo() {
-    await fetch("./demo.json")
-    .then((response) => {
-        if(!response.ok)
-            throw new Error(`Http Error ${response.status}`)
-        return response.json()
-    })
-    .then((data) => {
-        localStorage.setItem('data',JSON.stringify(data))
-        console.log(data)
-        window.location.href = "./project.html"
-    })
-    .catch((error) => {
+    
+    try {
+        const response = await fetch("./demo.json")
+            if(!response.ok)
+                throw new Error(`Http Error ${response.status}`)
+            const data = await response.json()
+            if(!Array.isArray(data.tasks)){
+                throw new Error("Donnees de demo invalides")
+            }
+            const project = addProject({
+                name : data.projectName,
+                description : "Projet de demonstration",
+                totalEstimatedHours : data.totalEstimatedHours,
+                tasks : data.tasks
+            })
+            window.location.href = `./project.html?id=${project.id}`
+        }
+    catch(error){
         console.error(error.message)
-    })
+    }
 }
 export async function GenerateAi(prompt){
     const apiKey = sessionStorage.getItem('api_key')
