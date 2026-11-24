@@ -41,18 +41,18 @@
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div class="bg-[#FFFCF7] border border-[#D9CBC3] p-6">
                     <p class="text-sm text-[#756A6A]">Projets</p>
-                    <h3 class="text-4xl font-bold mt-3">01</h3>
+                    <h3 id="total-projects" class="text-4xl font-bold mt-3">01</h3>
                     <p class="text-sm text-[#B65E54] mt-2">Projet actif</p>
                 </div>
                 <div class="bg-[#FFFCF7] border border-[#D9CBC3] p-6">
                     <p class="text-sm text-[#756A6A]">Total des tâches</p>
-                    <h3 class="text-4xl font-bold mt-3">10</h3>
+                    <h3 id="total-tasks" class="text-4xl font-bold mt-3">10</h3>
                     <p class="text-sm text-[#756A6A] mt-2">Toutes les tâches</p>
                 </div>
                 <div class="bg-[#FFFCF7] border border-[#D9CBC3] p-6">
                     <p class="text-sm text-[#756A6A]">Tâches terminées</p>
-                    <h3 class="text-4xl font-bold mt-3">06</h3>
-                    <p class="text-sm text-[#B65E54] mt-2">60% du travail</p>
+                    <h3 id="completed-tasks" class="text-4xl font-bold mt-3">06</h3>
+                    <p id="completion-rate" class="text-sm text-[#B65E54] mt-2">60% du travail</p>
                 </div>
             </div>
         </section>
@@ -62,7 +62,7 @@
                     <h2 class="text-2xl font-bold">Mes projets</h2>
                     <p class="text-sm text-[#756A6A] mt-1">Retrouvez vos projets et leur progression.</p>
                 </div>
-                <span class="text-sm text-[#756A6A]">1 projet</span>
+                <span id="projects-count" class="text-sm text-[#756A6A]">1 projet</span>
             </div>
             <div id="projects" class="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <article class="bg-[#FFFCF7] border border-[#D9CBC3] p-6">

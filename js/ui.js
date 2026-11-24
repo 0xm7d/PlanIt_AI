@@ -101,7 +101,7 @@ export function LinkForm(Submit){
         Submit()
     })
 }
-export function Render(projects){
+export function Render(projects , onDelete){
     const display_projects = document.getElementById('projects')
     display_projects.innerHTML = ''
     projects.forEach(project => {
@@ -148,6 +148,11 @@ export function Render(projects){
                             <a href="project.html?id=${project.id}" class="text-sm font-bold text-[#542B35] hover:underline">Ouvrir le projet</a>
                         </div>
                     </div>`
+                    const deleteBtn = article.querySelector("button")
+                    deleteBtn.addEventListener('click', () => {
+                        if(confirm("Voulez-vous supprimer ce projet ?"))
+                            onDelete(project.id)
+                    })
                 display_projects.appendChild(article)
     });
 }
@@ -180,4 +185,16 @@ export function StartTaskModal(onSave){
 export function CloseTaskModal(){
     const modal = document.getElementById("task-modal")
     if(modal) modal.classList.add('hidden')
+}
+export function RenderStats(projects){
+    const totalProjects = projects.length
+    const tasks = projects.flatMap(project => Array.isArray(project.tasks)? project.tasks : [])
+    const totalTasks = tasks.length
+    const completedTasks = tasks.filter(task => task.status === "Done").length
+    const percentage = totalTasks === 0 ? 0 : Math.round((completedTasks / totalTasks) * 100)
+    document.getElementById("total-projects").textContent = totalProjects
+    document.getElementById("total-tasks").textContent = totalTasks
+    document.getElementById("completed-tasks").textContent = completedTasks
+    document.getElementById("projects-count").textContent = `${totalProjects} projets`
+    document.getElementById("completion-rate").textContent = `${percentage}% du travail`
 }

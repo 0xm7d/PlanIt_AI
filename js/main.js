@@ -1,14 +1,23 @@
-import { DemoBtn, render, LinkForm, Modal,getData, Render, RenderProjectInfo , StartTaskModal,CloseTaskModal } from "./ui.js"
+import { DemoBtn, render, LinkForm, Modal,getData, Render, RenderProjectInfo , StartTaskModal,CloseTaskModal , RenderStats } from "./ui.js"
 import { Prompt } from "./prompt.js";
 import { Get , addProject , Save} from "./storage.js";
 import { Demo , GenerateAi} from "./api.js";
 Modal()
 if(window.location.pathname === '/' || window.location.pathname.endsWith("/index.html")){
-    const projects = Get()
-    Render(projects)
+    function deleteProject(id){
+        const projects = Get().filter(project => project.id !== id)
+        Save(projects)
+        Render(projects,deleteProject)
+        RenderStats(projects);
+    }
+    Render(Get(),deleteProject)
+    RenderStats(Get());
 }
 // console.log(Get())
 LinkForm(async () => {
+    const btn = document.getElementById("generate-btn")
+    btn.disabled = true
+    btn.textContent = "Generation en cours...."
     try {
         const projet = getData()
         const prompt = Prompt(projet)
@@ -30,6 +39,10 @@ LinkForm(async () => {
     catch (err){
         console.error(err)
         alert(err.message)
+    }
+    finally {
+        btn.disabled = false
+        btn.textContent = "Generer le plan de developement "
     }
 })
 console.log("kolchi khdam !!");
